@@ -1,0 +1,10 @@
+**/node_modules
+**/dist
+**/.vite
+**/*.log
+.git
+.gitignore
+data
+*.db
+*.db-wal
+*.db-shm

@@ -1,0 +1,16 @@
+{
+  "name": "collation-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "多人校勘技术规程 Web 应用 — 后端 API",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node src/selftest.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "express": "^4.21.2"
+  }
+}

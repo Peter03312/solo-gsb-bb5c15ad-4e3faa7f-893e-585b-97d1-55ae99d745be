@@ -1,0 +1,17 @@
+{
+  "name": "regcollate",
+  "version": "1.0.0",
+  "private": true,
+  "description": "多人校勘技术规程 Web 应用（编号沿革 / 批注锚定 / 签核继承 / 版本冲突检测）",
+  "type": "module",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "build": "npm run build -w client",
+    "start": "node server/src/index.js",
+    "dev:server": "node --watch server/src/index.js",
+    "dev:client": "npm run dev -w client"
+  }
+}

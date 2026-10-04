@@ -1,0 +1,25 @@
+services:
+  regcollate:
+    build: .
+    image: regcollate:latest
+    container_name: regcollate
+    restart: unless-stopped
+    ports:
+      # 宿主机端口:容器端口；如需改宿主机端口，修改左侧即可
+      - "${HOST_PORT:-3000}:3000"
+    environment:
+      # 生产环境请在 .env 或环境变量中设置强随机 JWT_SECRET
+      JWT_SECRET: "${JWT_SECRET:-please-change-this-secret}"
+      SEED_ON_START: "${SEED_ON_START:-true}"
+      DB_PATH: "/app/data/app.db"
+    volumes:
+      # SQLite 数据库持久化到命名卷
+      - regcollate-data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  regcollate-data:
